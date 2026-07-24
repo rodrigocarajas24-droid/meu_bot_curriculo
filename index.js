@@ -3,8 +3,20 @@ const qrcode = require('qrcode-terminal');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const http = require('http');
+const express = require('express');
 const os = require('os');
+
+// Configurando o servidor HTTP para o Render atender à porta exigida (10000)
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+app.get('/', (req, res) => {
+    res.send('Bot do WhatsApp e Gerador de Currículo rodando com sucesso!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor HTTP rodando na porta ${PORT}`);
+});
 
 const isWindows = os.platform() === 'win32';
 const chromePath = isWindows 
@@ -27,7 +39,7 @@ const client = new Client({
             '--no-zygote',
             '--disable-gpu',
             '--disable-software-rasterizer',
-            '--single-process', // Roda em processo único para economizar RAM
+            '--single-process',
             '--disable-extensions',
             '--memory-pressure-off',
             '--max_old_space_size=256'
@@ -72,31 +84,26 @@ client.on('message', async msg => {
     if (s.etapa === 'CURRICULO_FLUXO') {
     let st = atendimentos[chatID];
 
-    // Passo 0: Nome
     if (st.passo === 0) {
         st.dados['nome'] = cmd.trim();
         st.passo = 1;
         return msg.reply("📱 Qual seu telefone?");
     }
-    // Passo 1: Telefone
     else if (st.passo === 1) {
         st.dados['telefone'] = cmd.trim();
         st.passo = 2;
         return msg.reply("📍 Qual sua cidade?");
     }
-    // Passo 2: Cidade
     else if (st.passo === 2) {
         st.dados['cidade'] = cmd.trim();
         st.passo = 3;
         return msg.reply("📧 Qual seu e-mail?");
     }
-    // Passo 3: Email
     else if (st.passo === 3) {
         st.dados['email'] = cmd.trim();
         st.passo = 4;
         return msg.reply("💼 Quantas experiências profissionais deseja cadastrar?\n*(Digite apenas o número, ex: 1, 2, 3...)*");
     }
-    // Passo 4: Quantidade de experiências
     else if (st.passo === 4) {
         let qtd = parseInt(cmd);
         if (isNaN(qtd) || qtd <= 0) {
@@ -104,11 +111,10 @@ client.on('message', async msg => {
         }
         st.qtdExp = qtd;
         st.expAtual = 1;
-        st.dados.experiencias = []; // Inicializa o array de experiências com segurança
+        st.dados.experiencias = [];
         st.passo = 5; 
         return msg.reply(`📝 Cadastre a exp ${st.expAtual} separando por vírgula:\nEmpresa, Cidade, Cargo, Período\n\n*(Ex: TecWise, Canaã dos Carajás-Pa, Técnico de Automação, 05/02/2025 a 02/02/2026)*`);
     }
-    // Passo 5: Loop de cadastro de cada experiência
     else if (st.passo === 5) {
         let textoExp = cmd.trim();
         st.dados.experiencias.push(textoExp);
@@ -117,11 +123,10 @@ client.on('message', async msg => {
             st.expAtual++;
             return msg.reply(`📝 Cadastre a exp ${st.expAtual} separando por vírgula:\nEmpresa, Cidade, Cargo, Período`);
         } else {
-            st.passo = 6; // Terminou as experiências, vai para formação
+            st.passo = 6;
             return msg.reply("🎓 Informe sua Formação e Certificações:");
         }
     }
-    // Passo 6: Habilidades Técnicas
     else if (st.passo === 6) {
         st.dados['formacao'] = cmd.trim();
         st.passo = 7;
@@ -130,7 +135,6 @@ client.on('message', async msg => {
             "💡 _Dica: Digite suas competências, ferramentas, softwares ou conhecimentos da sua área (ex: Excel, Power BI, Python, Manutenção, etc.), um abaixo do outro ou separados por vírgula._"
         );
     }
-    // Passo 7: CNH
     else if (st.passo === 7) {
         st.dados['habilidades'] = cmd.trim();
         st.passo = 8;
@@ -140,13 +144,11 @@ client.on('message', async msg => {
             "*(Ex: AD, B ou Não)*"
         );
     }
-    // Passo 8: disponibilidade de viagem
     else if (st.passo === 8) {
         st.dados['cnh'] = cmd.trim();
         st.passo = 9;
         return msg.reply("✈️ Tem disponibilidade de viagem?\n*(Ex: Sim, total / Apenas finais de semana / Não)*");
     }
-    // Passo 9: Disponibilidade de viagem -> Vai para a Revisão com Taxa PIX
     else if (st.passo === 9) {
         st.dados['viagem'] = cmd.trim();
         st.passo = 10;
@@ -166,7 +168,7 @@ client.on('message', async msg => {
                      `✈️ *Viagem:* ${st.dados.viagem}\n\n` +
                      `-----------------------------------\n` +
                      `💡 *Por que cobramos uma taxa?*\n` +
-                     `Para manter nosso serviço online 24/7, realizar a manutenção constante do sistema de formatação ATS (que garante que seu currículo seja lido pelos robôs das empresas) e oferecer suporte personalizado.\n\n` +
+                     `Para manter nosso serviço online 24/7, realizar a manutenção constante do sistema de formatação ATS e oferecer suporte personalizado.\n\n` +
                      `Deseja corrigir algo ou prosseguir?\n` +
                      `1️⃣ Editar dados (Reinicia o cadastro)\n` +
                      `2️⃣ Pagar taxa (R$ 10,00 via PIX)`;
@@ -190,11 +192,9 @@ client.on('message', async msg => {
                     return msg.reply("❌ Erro ao gerar o arquivo PDF.");
                 }
                 
-                // Pasta onde o gerador Python salva os currículos
                 const pastaDestino = path.join(__dirname, 'curriculos_gerados');
                 
                 if (fs.existsSync(pastaDestino)) {
-                    // Pega automaticamente o arquivo PDF mais recente gerado na pasta
                     const arquivos = fs.readdirSync(pastaDestino)
                         .filter(f => f.endsWith('.pdf'))
                         .map(f => ({
@@ -221,13 +221,3 @@ client.on('message', async msg => {
 });
 
 client.initialize();
-
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Bot do WhatsApp com fluxo ATS e PIX rodando perfeitamente!\n');
-});
-
-const PORT = process.env.PORT || 10000;
-server.listen(PORT, () => {
-    console.log(`Servidor HTTP rodando na porta ${PORT}`);
-});
