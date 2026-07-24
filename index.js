@@ -7,6 +7,7 @@ const path = require('path');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
+        executablePath: '/opt/render/.cache/puppeteer/chrome/linux-146.0.7680.31/chrome-linux64/chrome',
         headless: true,
         args: [
             '--no-sandbox',
@@ -39,23 +40,19 @@ client.on('message', async msg => {
     const chatID = msg.from;
     const cmd = msg.body.trim();
     
-    // 1. Inicializa ou recupera o estado do usuário
     let s = atendimentos[chatID] || { etapa: 'MENU' };
 
-    // 2. Lógica de Gatilhos (Oi, Bom dia, etc)
     const gatilhos = ['oi', 'olá', 'bom dia', 'boa tarde', 'boa noite', 'quero fazer documento', 'documento', 'menu'];
     if (gatilhos.some(g => cmd.toLowerCase().includes(g))) {
         atendimentos[chatID] = { etapa: 'MENU' };
         return msg.reply("✨ *SISTEMA GRÁFICA DIGITAL*\n\n1️⃣ Currículos\n2️⃣ Declarações\n3️⃣ Ofícios\n0️⃣ Sair");
     }
 
-    // 3. Lógica de Voltar
     if (cmd === '0') {
         atendimentos[chatID] = { etapa: 'MENU' };
         return msg.reply("✨ *SISTEMA GRÁFICA DIGITAL*\n1️⃣ Currículos\n2️⃣ Declarações\n3️⃣ Ofícios");
     }
 
-    // 4. Menu Principal
     if (s.etapa === 'MENU') {
         if (cmd === '1') {
             atendimentos[chatID] = { etapa: 'COLETA', tipo: '1', passo: 0, dados: {} };
@@ -71,7 +68,6 @@ client.on('message', async msg => {
         }
     }
 
-    // 5. Submenus
     if (s.etapa === 'SUBMENU_DECLARACAO' || s.etapa === 'SUBMENU_OFICIO') {
         if (configuracaoFluxos[cmd]) {
             atendimentos[chatID] = { etapa: 'COLETA', tipo: cmd, passo: 0, dados: {} };
@@ -79,7 +75,6 @@ client.on('message', async msg => {
         }
     }
 
-    // 6. Coleta de dados
     if (s.etapa === 'COLETA') {
         let sAtual = atendimentos[chatID];
         const config = configuracaoFluxos[sAtual.tipo];
@@ -97,7 +92,6 @@ client.on('message', async msg => {
         return;
     }
 
-    // 7. Confirmação e Geração
     if (s.etapa === 'CONFIRMACAO') {
         if (cmd.toLowerCase() === 'sim') {
             const pathJson = path.join(__dirname, `dados_${chatID}.json`);
