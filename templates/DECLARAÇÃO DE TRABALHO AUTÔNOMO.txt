@@ -1,0 +1,10 @@
+DECLARAÇÃO DE TRABALHO AUTÔNOMO
+
+Eu, {{NOME}}, inscrito(a) no CPF sob o nº {{CPF}} e portador(a) do RG nº {{RG}}, DECLARO para os devidos fins que exerço a atividade autônoma de {{PROFISSAO}}, desde {{DATA_INICIO}}, auferindo uma renda média mensal bruta de aproximadamente R$ {{RENDA_VALOR}} ({{RENDA_EXTENSO}}).
+
+Por ser a expressão da verdade, assumo inteira responsabilidade civil e criminal pelas informações prestadas nesta declaração.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME}}

@@ -1,0 +1,9 @@
+DECLARAÇÃO DE COMPARECIMENTO
+
+Declaramos para os devidos fins de justificativa de ausência laboral que o(a) Sr(a). {{NOME_FUNCIONARIO}}, inscrito(a) no CPF sob o nº {{CPF}}, compareceu a esta instituição no dia {{DATA_ATENDIMENTO}}, no período das {{HORA_INICIO}} às {{HORA_FIM}} horas, para fins de {{MOTIVO}}.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_RESPONSAVEL}}
+{{NOME_ESTABELECIMENTO}}

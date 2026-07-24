@@ -1,0 +1,10 @@
+DECLARAÇÃO DE DESEMPREGO
+
+Eu, {{NOME}}, {{NACIONALIDADE}}, {{ESTADO_CIVIL}}, portador(a) do RG nº {{RG}} e do CPF nº {{CPF}}, DECLARO para os devidos fins de direito que me encontro atualmente desempregado(a), não exercendo nenhuma atividade remunerada e, portanto, sem qualquer tipo de renda própria no momento.
+
+Declaro estar ciente de que a falsidade desta declaração me sujeitará às penalidades previstas no artigo 299 do Código Penal Brasileiro.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME}}

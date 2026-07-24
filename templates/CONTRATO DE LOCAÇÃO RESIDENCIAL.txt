@@ -1,0 +1,27 @@
+CONTRATO DE LOCAÇÃO RESIDENCIAL
+
+LOCADOR(A): {{NOME_LOCADOR}}, CPF {{CPF_LOCADOR}}, residente em {{ENDERECO_LOCADOR}}.
+LOCATÁRIO(A): {{NOME_LOCATARIO}}, CPF {{CPF_LOCATARIO}}, residente em {{ENDERECO_LOCATARIO}}.
+
+OBJETO: Imóvel situado em {{ENDERECO_IMOVEL}}, CEP {{CEP_IMOVEL}}.
+
+PRAZO: O presente contrato terá vigência de {{DURACAO_MESES}} meses, com início em {{DATA_INICIO}} e término em {{DATA_FIM}}.
+
+VALOR E PAGAMENTO: O aluguel mensal será de R$ {{VALOR_ALUGUEL}}, com vencimento todo dia {{DIA_VENCIMENTO}} de cada mês. O pagamento deverá ser feito via {{FORMA_PAGAMENTO}}.
+
+ENCARGOS: Caberá ao LOCATÁRIO o pagamento das despesas de {{ENCARGOS_EX_LUZ_AGUA}}, além do aluguel.
+
+RESCISÃO: O descumprimento de qualquer cláusula deste contrato ensejará a rescisão imediata, sujeitando o infrator à multa de {{VALOR_MULTA_RESCISAO}}.
+
+As partes declaram estar de acordo com todas as cláusulas aqui expostas.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_LOCADOR}} (LOCADOR)
+
+__________________________________________
+{{NOME_LOCATARIO}} (LOCATÁRIO)
+
+__________________________________________
+{{NOME_TESTEMUNHA}} (TESTEMUNHA)

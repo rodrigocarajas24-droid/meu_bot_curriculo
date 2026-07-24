@@ -1,0 +1,20 @@
+OFÍCIO Nº {{NUMERO_OFICIO}}/{{ANO}}
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+À(Ao) {{DESTINATARIO_NOME}}
+{{DESTINATARIO_CARGO}}
+{{INSTITUICAO_DESTINO}}
+
+Assunto: {{ASSUNTO}}
+
+Prezado(a) Senhor(a),
+
+{{TEXTO_CORPO}}
+
+Certos de sua atenção, renovamos protestos de elevada estima e consideração.
+
+Atenciosamente,
+
+__________________________________________
+{{SEU_NOME}}
+{{SEU_CARGO_CPF}}

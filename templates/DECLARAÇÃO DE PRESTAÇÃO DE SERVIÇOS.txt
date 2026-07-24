@@ -1,0 +1,10 @@
+DECLARAÇÃO DE PRESTAÇÃO DE SERVIÇOS
+
+Eu, {{NOME_PRESTADOR}}, inscrito(a) no CPF/CNPJ nº {{CPF_CNPJ_PRESTADOR}}, DECLARO que prestei serviços profissionais de {{SERVICO}} para a empresa {{NOME_EMPRESA}}, inscrita no CNPJ nº {{CNPJ_EMPRESA}}, durante o período de {{DATA_INICIO}} a {{DATA_FIM}}.
+
+Por ser a expressão da verdade, firmo o presente.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_PRESTADOR}}

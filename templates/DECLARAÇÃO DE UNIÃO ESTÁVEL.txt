@@ -1,0 +1,13 @@
+DECLARAÇÃO DE UNIÃO ESTÁVEL
+
+Nós, {{NOME_1}}, {{NACIONALIDADE_1}}, {{PROFISSAO_1}}, portador do RG nº {{RG_1}} e CPF nº {{CPF_1}}, e {{NOME_2}}, {{NACIONALIDADE_2}}, {{PROFISSAO_2}}, portadora do RG nº {{RG_2}} e CPF nº {{CPF_2}}, DECLARAMOS sob as penas da lei que convivemos em União Estável desde {{DATA_INICIO}}, de natureza pública, contínua e duradoura, com o objetivo de constituição de família, nos termos do Artigo 1.723 do Código Civil Brasileiro.
+
+Por estarmos em pleno acordo, assinamos a presente declaração.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_1}}
+
+__________________________________________
+{{NOME_2}}

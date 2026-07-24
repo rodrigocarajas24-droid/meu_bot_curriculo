@@ -1,0 +1,10 @@
+DECLARAÇÃO DE RETIRADA E RESPONSABILIDADE DE BENS
+
+Eu, {{NOME_FUNCIONARIO}}, cargo {{CARGO}}, inscrito(a) no CPF sob o nº {{CPF}}, DECLARO que recebi da empresa {{NOME_EMPRESA}} o equipamento: {{EQUIPAMENTO_DESCRICAO}}.
+
+Assumo total responsabilidade pela guarda, uso correto e conservação do referido bem, comprometendo-me a devolvê-lo ao término do meu vínculo de trabalho.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_FUNCIONARIO}}

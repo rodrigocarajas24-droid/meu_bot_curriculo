@@ -1,0 +1,10 @@
+DECLARAÇÃO DE ISENÇÃO DE IMPOSTO DE RENDA
+
+Eu, {{NOME}}, inscrito(a) no CPF sob o nº {{CPF}} e RG nº {{RG}}, DECLARO para os devidos fins de direito que sou isento(a) de apresentação da Declaração de Ajuste Anual do IRPF, face ao fato de meus rendimentos não se enquadrarem nos limites fixados pela Secretaria da Receita Federal.
+
+Responsabilizo-me civil e criminalmente pelas informações aqui prestadas.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME}}

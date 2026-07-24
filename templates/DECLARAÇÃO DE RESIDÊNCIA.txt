@@ -1,0 +1,10 @@
+DECLARAÇÃO DE RESIDÊNCIA
+
+Eu, {{NOME_DECLARANTE}}, inscrito(a) no CPF sob o nº {{CPF_DECLARANTE}} e RG nº {{RG_DECLARANTE}}, DECLARO para os devidos fins de direito e sob as penas da lei que {{NOME_TERCEIRO}}, inscrito(a) no CPF sob o nº {{CPF_TERCEIRO}}, reside e domicilia-se no meu imóvel situado na {{ENDERECO}}, na cidade de {{CIDADE_UF}}, CEP {{CEP}}.
+
+Por ser a expressão da verdade, firmo a presente para que surta seus efeitos legais.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_DECLARANTE}}

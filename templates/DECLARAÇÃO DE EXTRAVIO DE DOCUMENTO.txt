@@ -1,0 +1,10 @@
+DECLARAÇÃO DE EXTRAVIO DE DOCUMENTOS
+
+Eu, {{NOME}}, inscrito(a) no CPF sob o nº {{CPF}} e portador(a) do RG nº {{RG}}, DECLARO para os devidos fins que, no dia {{DATA_EXTRAVIO}}, perdi ou tive extraviado o seguinte documento: {{DOCUMENTO_EXTRAVIADO}}.
+
+Declaro a veracidade dos fatos acima expostos e me comprometo a devolver o documento caso o encontre.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME}}

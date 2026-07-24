@@ -1,0 +1,11 @@
+DECLARAÇÃO DE CONCLUSÃO DE CURSO
+
+Declaramos para os devidos fins que o(a) aluno(a) {{NOME_ALUNO}}, portador(a) do RG nº {{RG}} e CPF nº {{CPF}}, concluiu com êxito todas as exigências acadêmicas do curso de {{NOME_CURSO}}, nesta instituição, no período letivo encerrado em {{DATA_CONCLUSAO}}.
+
+Informamos que o certificado oficial encontra-se em fase de emissão.
+
+{{CIDADE_UF}}, {{DATA_ATUAL}}.
+
+__________________________________________
+{{NOME_RESPONSAVEL}}
+{{NOME_INSTITUICAO}}
