@@ -223,7 +223,7 @@ const server = http.createServer((req, res) => {
     res.end('Bot do WhatsApp com fluxo ATS e PIX rodando perfeitamente!\n');
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 server.listen(PORT, () => {
     console.log(`Servidor HTTP rodando na porta ${PORT}`);
 });
