@@ -26,7 +26,11 @@ const client = new Client({
             '--no-first-run',
             '--no-zygote',
             '--disable-gpu',
-            '--disable-software-rasterizer'
+            '--disable-software-rasterizer',
+            '--single-process', // Roda em processo único para economizar RAM
+            '--disable-extensions',
+            '--memory-pressure-off',
+            '--max_old_space_size=256'
         ]
     }
 });
