@@ -3,6 +3,7 @@ const qrcode = require('qrcode-terminal');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
