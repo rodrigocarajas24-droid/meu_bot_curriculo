@@ -4,12 +4,9 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const puppeteer = require('puppeteer');
-
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: puppeteer.executablePath(),
         headless: true,
         args: [
             '--no-sandbox',
