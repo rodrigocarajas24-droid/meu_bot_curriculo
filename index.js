@@ -3,12 +3,10 @@ const qrcode = require('qrcode-terminal');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const puppeteer = require('puppeteer'); // Adicione esta linha
 
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: puppeteer.executablePath(), // Forma dinâmica e segura
         headless: true,
         args: [
             '--no-sandbox',
