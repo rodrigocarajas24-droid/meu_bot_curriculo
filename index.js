@@ -7,7 +7,6 @@ const path = require('path');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
@@ -100,10 +99,12 @@ client.on('message', async msg => {
             exec(`python gerador.py "${pathJson}" "${nomeTemplate}"`, async (err) => {
                 if (err) return msg.reply("❌ Erro ao gerar.");
                 const pasta = (s.tipo === '1') ? 'curriculos_gerados' : 'documentos_gerados';
-                const caminho = path.join('F:', 'Bot_whatsapp', pasta, 'Arquivo_Gerado.pdf');
+                const caminho = path.join(__dirname, pasta, 'Arquivo_Gerado.pdf'); // <--- Caminho relativo correto para o Linux/Render
                 if (fs.existsSync(caminho)) {
                     await client.sendMessage(msg.from, MessageMedia.fromFilePath(caminho));
                     delete atendimentos[chatID];
+                } else {
+                    msg.reply("❌ Arquivo PDF não foi encontrado após a geração.");
                 }
             });
         } else if (cmd.toLowerCase() === 'nao') {
