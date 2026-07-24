@@ -7,10 +7,12 @@ const path = require('path');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
+        executablePath: require('puppeteer').executablePath(),
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
 });
+
 const configuracaoFluxos = {
     '1': { nome: 'CURRICULO', perguntas: ['Nome', 'Telefone', 'Cidade', 'E-mail', 'Formação', 'Habilidades', 'Experiências'] },
     '2.1': { nome: 'comparecimento', perguntas: ['Nome', 'Data', 'Local'] },
@@ -98,7 +100,7 @@ client.on('message', async msg => {
             exec(`python gerador.py "${pathJson}" "${nomeTemplate}"`, async (err) => {
                 if (err) return msg.reply("❌ Erro ao gerar.");
                 const pasta = (s.tipo === '1') ? 'curriculos_gerados' : 'documentos_gerados';
-                const caminho = path.join(__dirname, pasta, 'Arquivo_Gerado.pdf'); // <--- Caminho relativo correto para o Linux/Render
+                const caminho = path.join(__dirname, pasta, 'Arquivo_Gerado.pdf');
                 if (fs.existsSync(caminho)) {
                     await client.sendMessage(msg.from, MessageMedia.fromFilePath(caminho));
                     delete atendimentos[chatID];
