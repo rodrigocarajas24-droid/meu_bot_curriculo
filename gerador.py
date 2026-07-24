@@ -7,9 +7,12 @@ def gerar(caminho_json, template_nome):
     with open(caminho_json, 'r', encoding='utf-8') as f:
         dados = json.load(f)
     
-    # 2. Define a pasta de destino baseada no tipo
+    # 2. Define a pasta de destino baseada no tipo (Compatível com o Render/Linux)
     pasta = "curriculos_gerados" if template_nome == "CURRICULO" else "documentos_gerados"
-    caminho_saida = os.path.join(r"F:\Bot_whatsapp", pasta, "Arquivo_Gerado.pdf")
+    pasta_destino = os.path.join(os.path.dirname(__file__), pasta)
+    os.makedirs(pasta_destino, exist_ok=True)
+    
+    caminho_saida = os.path.join(pasta_destino, "Arquivo_Gerado.pdf")
     
     # Cria o canvas do PDF
     c = canvas.Canvas(caminho_saida, pagesize=A4)
