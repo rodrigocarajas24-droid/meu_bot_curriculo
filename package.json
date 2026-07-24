@@ -1,13 +1,13 @@
 {
-  "name": "bot-whatsapp-ats",
+  "name": "meu_bot_curriculo",
   "version": "1.0.0",
-  "description": "Bot WhatsApp com gerador de currículo ATS em Python",
+  "description": "Bot WhatsApp gerador de curriculos",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^5.2.1",
+    "express": "^4.19.2",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.23.0"
   }
