@@ -1,4 +1,11 @@
 {
+  "name": "Bot_whatsapp",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp para gerador de curriculos e documentos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "puppeteer": "^22.0.0",
     "qrcode-terminal": "^0.12.0",
