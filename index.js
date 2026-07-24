@@ -114,5 +114,15 @@ client.on('message', async msg => {
         }
     }
 });
+// Adicione isso no final do seu index.js para o Render detectar a porta aberta
+const http = require('http');
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Bot do WhatsApp Rodando com Sucesso!\n');
+});
 
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Servidor HTTP rodando na porta ${PORT}`);
+});
 client.initialize();
