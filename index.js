@@ -58,27 +58,16 @@ client.on('message', async msg => {
     
     let s = atendimentos[chatID] || { etapa: 'MENU' };
 
-    const gatilhos = ['oi', 'olá', 'bom dia', 'boa tarde', 'boa noite', 'quero fazer documento', 'documento', 'menu'];
+    const gatilhos = ['oi', 'olá', 'bom dia', 'boa tarde', 'boa noite', 'quero fazer currículo', 'curriculo', 'menu'];
     if (gatilhos.some(g => cmd.toLowerCase().includes(g))) {
-        atendimentos[chatID] = { etapa: 'MENU' };
-        return msg.reply("✨ *SISTEMA GRÁFICA DIGITAL*\n\n1️⃣ Currículos ATS\n2️⃣ Declarações\n3️⃣ Ofícios\n0️⃣ Sair");
-    }
-
-    if (cmd === '0' && s.etapa === 'MENU') {
-        return msg.reply("Sessão encerrada. Envie 'Oi' quando quiser iniciar novamente.");
-    }
-
-    if (s.etapa === 'MENU') {
-        if (cmd === '1') {
-            atendimentos[chatID] = { 
-                etapa: 'CURRICULO_FLUXO', 
-                passo: 0, 
-                dados: { experiencias: [] },
-                qtdExp: 0,
-                expAtual: 0
-            };
-            return msg.reply("✨ Bom dia! É um prazer ajudar você a dar o próximo passo na sua carreira. Estou aqui para transformar suas experiências em um currículo de alto impacto, otimizado para sistemas de seleção (ATS). Vamos começar?\n\n👤 Para iniciarmos, qual é o seu nome completo?");
-        }
+        atendimentos[chatID] = { 
+            etapa: 'CURRICULO_FLUXO', 
+            passo: 0, 
+            dados: { experiencias: [] },
+            qtdExp: 0,
+            expAtual: 0
+        };
+        return msg.reply("✨ Bom dia! É um prazer ajudar você a dar o próximo passo na sua carreira. Estou aqui para transformar suas experiências em um currículo de alto impacto, otimizado para sistemas de seleção (ATS). Vamos começar?\n\n👤 Para iniciarmos, qual é o seu nome completo?");
     }
 
     if (s.etapa === 'CURRICULO_FLUXO') {
@@ -178,8 +167,14 @@ client.on('message', async msg => {
 }
     if (s.etapa === 'REVISAO_PIX') {
         if (cmd === '1') {
-            atendimentos[chatID] = { etapa: 'MENU' };
-            return msg.reply("🔄 Cadastro reiniciado. Envie 'Oi' para começar novamente.");
+            atendimentos[chatID] = { 
+                etapa: 'CURRICULO_FLUXO', 
+                passo: 0, 
+                dados: { experiencias: [] },
+                qtdExp: 0,
+                expAtual: 0
+            };
+            return msg.reply("🔄 Cadastro reiniciado. Vamos começar novamente.\n\n👤 Qual é o seu nome completo?");
         } else if (cmd === '2') {
             msg.reply("⏳ Pagamento confirmado! Gerando seu currículo otimizado para ATS, aguarde um instante...");
 
