@@ -25,11 +25,7 @@ const chromePath = isWindows
     : undefined;
 
 const client = new Client({
-    authStrategy: new LocalAuth({
-        dataPath: path.join(__dirname, '.wwebjs_auth')
-    }),
     puppeteer: {
-        executablePath: chromePath,
         headless: true,
         args: [
             '--no-sandbox',
@@ -38,12 +34,8 @@ const client = new Client({
             '--disable-accelerated-2d-canvas',
             '--no-first-run',
             '--no-zygote',
-            '--disable-gpu',
-            '--disable-software-rasterizer',
-            '--single-process',
-            '--disable-extensions',
-            '--memory-pressure-off',
-            '--max_old_space_size=256'
+            '--single-process', // Roda em processo único para economizar RAM
+            '--disable-gpu'
         ]
     }
 });
