@@ -19,9 +19,12 @@ app.listen(PORT, () => {
 });
 
 const isWindows = os.platform() === 'win32';
+
+// No Windows usamos o caminho fixo, no Render/Linux deixamos 'undefined' 
+// para o Puppeteer gerenciar o navegador automaticamente.
 const chromePath = isWindows 
     ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' 
-    : '/usr/bin/google-chrome-stable';
+    : undefined;
 
 const client = new Client({
     authStrategy: new LocalAuth({
@@ -46,7 +49,6 @@ const client = new Client({
         ]
     }
 });
-
 let atendimentos = {};
 
 client.on('qr', qr => qrcode.generate(qr, { small: true }));
