@@ -1,12 +1,11 @@
+const express = require('express');
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const express = require('express');
+const { exec } = require('child_process');
 const os = require('os');
 
-// Configurando o servidor HTTP para o Render atender à porta exigida (10000)
 const app = express();
 const PORT = process.env.PORT || 10000;
 
@@ -20,8 +19,7 @@ app.listen(PORT, () => {
 
 const isWindows = os.platform() === 'win32';
 
-// No Windows usamos o caminho fixo, no Render/Linux deixamos 'undefined' 
-// para o Puppeteer gerenciar o navegador automaticamente.
+// No Windows usamos o caminho fixo; no Render/Linux fica undefined para o Puppeteer gerenciar
 const chromePath = isWindows 
     ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' 
     : undefined;
